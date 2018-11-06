@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://how2j.cn/study/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+            $("#emil").focus(function () {
+            var t=setInterval(function () {
+                var str=$("#emil").val();
+                if(re.test(str)){
+                    $("#result").html("Right");
+                }
+                else{
+                $("#result").html("Error");}
+            },100)
+
+        })
+            $("#emil").blur(function () {
+                clearInterval(t);
+            })
+        })
+    </script>
+</head>
+<body>
+<div>
+    Emil:<input type="text" id="emil" value="552@qq.com">
+    <p id="result" style="color: red"></p>
+</div>
+</body>
+</html>
