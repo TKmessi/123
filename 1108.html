@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://how2j.cn/study/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#result").focus(function () {
+                var t=setInterval(function () {
+                    var res = $("#result").val();
+                    var re="";
+                    for (let i=0;i<res.length;i++){
+                        if(res[i]!=" "){
+                            re=re+res[i];
+                        }
+                    }
+
+                    var ress="";
+                    var l = re.length;
+                    if(l==0){
+                        ress="";
+                    }
+
+                    for (let i = 0; i < l; i++) {
+                        if (i == 3 || i == 7)
+                            ress = ress + " " + re[i];
+                        else {
+                            ress += re[i];
+                        }
+                    }
+
+
+                    $("#result").val(ress);
+
+
+                },1000)
+
+        }) })
+    </script>
+</head>
+<body>
+<input type="text" id="result" value="12345678987">
+<p id="ress"></p>
+</body>
+</html>
