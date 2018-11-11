@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://how2j.cn/study/jquery.min.js"></script>
+
+    <link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+
+            $(".img li").eq(0).show();
+
+            var i=0;
+            var t=setInterval(move,3000);
+            function move() {
+                i++;
+                if(i==4)
+                    i=0;
+
+                $(".img li").eq(i).fadeIn().siblings().fadeOut();
+            }
+            function moveL() {
+                i--;
+                if(i==-1)
+                    i=3;
+                $(".img li").eq(i).fadeIn().siblings().fadeOut();
+            }
+
+            $(".out .right").click(function () {
+                move();
+            });
+            $(".out .left").click(function () {
+                moveL()
+            });
+
+        });
+
+        function setBodyWidth(){
+            var barWidthHelper=document.createElement('div');
+            barWidthHelper.style.cssText="overflow:scroll; width:100px; height:100px;";
+            document.body.appendChild(barWidthHelper);
+            var barWidth=barWidthHelper.offsetWidth-barWidthHelper.clientWidth;
+            document.body.removeChild(barWidthHelper);
+            var bodyWidth=window.screen.availWidth-barWidth;
+            return bodyWidth;
+        }
+
+        $(document).ready(
+            function(){
+                var bodyWidth=setBodyWidth()+"px";
+                //document.body.style.width=bodyWidth;
+                $("body").css("width",bodyWidth);
+            })
+
+
+
+
+
+    </script>
+    <style>
+        *{padding: 0;margin: 0}
+        ul{
+            list-style: none;
+        }
+
+        img{
+            width: 100%;
+        }
+        .out{
+            width: 100%;
+            height: 800px;
+            top:0;
+            left:0;
+            position: relative;
+
+        }
+        .out1{
+            bottom: 0px;
+            background-color: rgb(59,61,64);
+            z-index:0;
+            width: 100%;
+            height: 100px;
+
+        }
+        .out2{
+            top:90px;
+            width: 100%;
+            height: 600px;
+            position:relative;
+        }
+        .out .img li{
+            position: absolute;
+            width: 100%;
+            top:0;
+            left: 0;
+            display: none;
+            z-index: -1;
+
+        }
+
+        .out .num li{
+            width: 20px;
+            height: 20px;
+            background: #666;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+
+
+        .out .btn{
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            cursor: pointer;
+
+            background: url("imgs/Circle.png");
+            color: #fff;
+
+        }
+
+        .out .left{
+            left: 60px;
+
+
+        }
+        .out .right{
+            right: 60px;
+        }
+        a:link,a:visited{
+            color:#ffffff;
+            text-decoration:none;
+        }
+        .out .US{
+
+            position: absolute;
+            right: 56px;
+
+            /*right:56px;*/
+            /*margin: 0 0 0 300px;*/
+            display: inline-block;
+        }
+        .out .US li{
+            width: 12px;
+            height: 24px;
+            z-index: 2;
+            display: inline-block;
+
+            margin: 0 8px;
+        }
+        .out .Lead{
+            position: absolute;
+            z-index:2;
+display: inline-block;
+            top: 15px;
+        }
+        .out .Lead .Daohang{
+            position: absolute;
+            margin: 0 auto;
+            width: 400px;
+            margin-left: -200px;
+            display: inline-block;
+        }
+        .out .Lead .Daohang .Daohangjiange{
+            margin: 0 30px 0 0;
+            display: inline-block;
+        }
+        .out .zhongjiantubiao{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -30px;
+        }
+        .out .zhongjianwenzi{
+            position: absolute;
+            width: 300px;
+            top: 50%;
+            left: 50%;
+            margin-top: 50px;
+            margin-left: -150px;
+        }
+        .out .wenzidaxiao{
+            font-size: 30px;
+            color: white;
+        }
+        .out .zhongjianxiaowenzi{
+            position: absolute;
+            width: 300px;
+            top: 50%;
+            left: 50%;
+            margin-top: 150px;
+            margin-left: -150px;
+        }
+        .out2 .zhongjianlantu{
+            height: 120px;
+            width: 120px;
+            left:50%;
+            top:100px;
+            margin-left:-60px;
+            position: absolute;
+        }
+        .out2 .lantuxiawenzi{
+            text-align: center;
+            top:220px;left:50%;
+            margin-left:-105px;
+            position: absolute;
+        }
+        .out2 .dibu{
+            position: absolute;
+            width: 100%;
+            height: 150px;
+            bottom: 0;
+            display: inline-block;
+        }
+        .out2 .xiaozi{
+            font-size: 4px;
+            text-align: center;
+        }
+        .out2 .dazi{
+            font-size: 6px;
+            text-align: center;
+            line-height: 8px;
+            color: #9d9d9d;
+        }
+
+        .out2 .sigetu{
+           display: inline-block;
+            margin: 0 100px  0 100px;
+        }
+        .out2 .sigetu .sigetujiange{
+            position: absolute;
+            margin: 0 -60px;
+        }
+    </style>
+</head>
+<body>
+<div class="out" >
+    <ul class="img">
+        <li style="height: 800px"><a href="#"><img src="imgs/image.png"  alt=""></a> </li>
+        <li style="height: 800px"> <a href="#"><img src="imgs/132.jpeg" alt=""></a></li>
+        <li style="height: 800px"><a href="#"><img src="imgs/333.jpg" width="100%" height="100%" alt=""></a></li>
+        <li style="height: 800px"><a href="#"><img src="imgs/234.jpg" alt=""></a></li>
+    </ul>
+    <div class="Lead" style="width: 100%">
+        <span style="margin: 0 0 0 56px"><a  href="#">RU</a>/<a href="#">EN</a></span>
+
+            <ul class="Daohang"style="left: 50%;" >
+                <li class="Daohangjiange" ><a href="#">PROJECT</a></li>
+                <li class="Daohangjiange"style="text-align: center;"><a href="#">ABOUT US</a></li>
+                <li class="Daohangjiange"style="text-align: center;"><a href="#">STORIES</a></li>
+                <li class="Daohangjiange"style="text-align: center;"> <a href="#">CONTACT</a></li>
+        </ul>
+
+        <ul class="US" >
+            <li><a href="#"><img src="imgs/Instagram.png"></a></li>
+            <li><a href="#"><img src="imgs/Twitter.png"></a></li>
+            <li><a href="#"><img src="imgs/Facebook.png"></a></li>
+
+        </ul>
+    </div>
+    <div >
+    <div class="left btn">
+        <div >
+            <span><img src="imgs/icon0.png"></span>
+        </div>
+        <div>
+
+        </div>
+
+    </div>
+        <div        class="zhongjiantubiao"  >
+            <div style="height:63px;width: 63px"> <img src="imgs/BaikalLogo.png"></div>
+            <div class="zhongjianwenzi">
+                <div style="text-align: center;"> <p class="wenzidaxiao"> We Bulit Object</p></div>
+                <div style="text-align: center;">    <p class="wenzidaxiao">And Spaces</p></div></div>
+            <div class="zhongjianxiaowenzi">
+                <div style="text-align: center;"> <p style="color: white"> Support bright students today for</p></div>
+                <div style="text-align: center">  <p style="color: white ">a better tomorrow</p></div>
+            </div>
+            </div>
+
+        </div>
+    <div class="right btn">
+        <div >
+            <div ><img src="imgs/icon.png" ></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="out1">
+   <div style="line-height: 100px;text-align:center">
+       <div style="width: 150px;display: inline-block">
+        <input type="text" class="form-control" value="E-mail" style="background-color: rgb(88,90,92);color: white;border: transparent">
+    </div>
+
+    <div style="width: 500px;display: inline-block">
+        <form role="form">
+            <div class="form-group">
+                <select class="form-control"style="background-color: rgb(88,90,92);color: white;border: transparent">
+                    <option>Investment</option>
+                    <option>Investment1</option>
+                    <option>Investment2</option>
+                    <option>Investment3</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div style="display:inline-block">
+    <button type="button" class="btn btn-primary">LET's START</button>
+    </div>
+   </div>
+</div>
+
+
+
+<div class="out2" >
+    <div class="zhongjianlantu">
+
+        <img src="imgs/icon1.png">
+    </div>
+    <div  class="lantuxiawenzi" >
+    <div>
+        <p style="font-size: 30px">Your Next Move</p>
+    </div>
+    <div>
+        <p style="font-size: 6px">Helping talented students unlock their full</p>
+    </div>
+    <div>
+        <p style="font-size: 6px">potential.Help us help them thrive.</p>
+    </div>
+    </div>
+
+
+    <div class="dibu" style="text-align: center">
+
+    <div class="sigetu">
+        <div class="sigetujiange"style=" text-align: center">
+           <div style="width: 20px;height: 20px; ">
+               <img src="imgs/icon2.png" style="margin-left: 48px" >
+           </div>
+            <br/>
+            <p class="xiaozi">EXPERIENCE</p>
+            <p class="dazi">72% of the students</p>
+            <p class="dazi">attend on scholarship</p>
+        </div>
+</div>
+
+
+
+        <!--</div>-->
+        <div class="sigetu">
+            <div  class="sigetujiange">
+                <div style="width: 20px;height: 20px">
+                    <img src="imgs/icon3.png" style="margin-left: 62px">
+                </div>
+                <br/>
+                <p class="xiaozi">OUR FUTURE</p>
+                <p class="dazi">20% of its student body is</p>
+                <p class="dazi">currently under scholarship</p>
+            </div>
+
+
+        </div>
+        <div class="sigetu">
+            <div  class="sigetujiange">
+                <div style="width: 20px;height: 20px">
+                    <img src="imgs/icon4.png" style="margin-left:68px">
+                </div>
+                <br/>
+                <p class="xiaozi">ACADEMIC TALENTS</p>
+                <p class="dazi">More than 1000 scholarships</p>
+                <p class="dazi">have been awarded</p>
+            </div>
+
+
+        </div>
+        <div class="sigetu">
+            <div  class="sigetujiange">
+                <div style="width: 20px;height: 20px">
+                    <img src="imgs/icon5.png" style="margin-left: 68px">
+                </div>
+                <br/>
+                <p class="xiaozi">BRILLIANT MINDS</p>
+                <p class="dazi">Anatolia College has always</p>
+                <p class="dazi">relied on donations</p>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>
