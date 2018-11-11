@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="jquery-3.3.1.min.js"></script>-->
+    <script src="http://how2j.cn/study/jquery.min.js"></script>
+    <script>
+        $(function () {
+//            var size=$(".img li").size();
+//            for(var i=1;i<=size;i++){
+//                var li="<li>"+i+"</li>";
+//                $(".num ").append(li);
+//            }
+
+            //shou dong kong zhi
+            $(".img li").eq(0).show();
+//            $(".num li ").eq(0).addClass("active");
+            $(".num li").mouseover(function () {
+                $(this).addClass("active").siblings().removeClass("active");
+
+                var index=$(this).index();
+                i=index;
+
+                $(".img li").eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+            });
+
+            //zi dong kong zhi
+            var i=0;
+            var t=setInterval(move,3000);
+            // xiang you yun dong
+            function move() {
+                i++;
+                if(i==4)
+                    i=0;
+                $(".num li").eq(i).addClass("active").siblings().removeClass("active");
+                $(".img li").eq(i).fadeIn().siblings().fadeOut();
+            }
+            function moveL() {
+                i--;
+                if(i==-1)
+                    i=3;
+                $(".num li").eq(i).addClass("active").siblings().removeClass("active");
+                $(".img li").eq(i).fadeIn().siblings().fadeOut();
+            }
+            $(".out").hover(function () {
+                clearInterval(t);
+            } ,function () {
+                t=setInterval(move,3000)
+            })
+            $(".out .right").click(function () {
+                move();
+            });
+            $(".out .left").click(function () {
+                moveL()
+        });
+
+        });
+
+
+
+    </script>
+    <style>
+        *{padding: 0;margin: 0}
+        ul{
+            list-style: none;
+        }
+        .out{
+            width: 730px;
+            height: 454px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .out .img li{
+            position: absolute;
+            top:0;
+            left: 0;
+            display: none;
+        }
+        .out .num{
+            position: absolute;
+            bottom:20px;
+            left: 0;
+            font-size: 0px;
+            width: 100%;
+            text-align: center;
+        }
+        .out .num li{
+            width: 20px;
+            height: 20px;
+            background: #666;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+
+        .out .num li.active{
+            background: red;
+        }
+        .out .btn{
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;
+            cursor: pointer;
+            width: 30px;
+            height: 60px;
+            font-size: 40px;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            display: none;
+        }
+        .out:hover .btn{
+            display: block;
+
+        }
+        .out .left{
+            left: 0;
+
+
+        }
+        .out .right{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="out">
+    <ul class="img">
+        <li><a href="#"><img src="img/00.jpg" alt=""></a> </li>
+        <li><a href="#"><img src="img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="img/321.jpg" alt=""></a></li>
+        <li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+    </ul>
+    <ul class="num">
+        <li class="active">1</li>
+        <li >2</li>
+        <li >3</li>
+        <li >4</li>
+    </ul>
+    <div class="left btn"><</div>
+    <div class="right btn">></div>
+</div>
+</body>
+</html>
